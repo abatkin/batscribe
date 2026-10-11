@@ -1,0 +1,4 @@
+# Toolchain tested with CXX-Qt 0.10.0 and Qt 6.11.2.
+[toolchain]
+channel = "1.98.1"
+components = ["clippy", "rustfmt"]

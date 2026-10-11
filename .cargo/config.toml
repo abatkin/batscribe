@@ -1,0 +1,4 @@
+# Qt can't be linked with GNU ld.bfd. Without an explicit -fuse-ld, CXX-Qt's build script picks
+# lld or gold; gold is deprecated in Rust, so use mold (Fedora package `mold`).
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]

@@ -1,0 +1,39 @@
+[workspace]
+resolver = "3"
+members = ["crates/batscribe-core", "crates/batscribe-desktop"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+batscribe-core = { path = "crates/batscribe-core" }
+
+# Qt binding: pinned to the release tested against Qt 6.11.2.
+cxx = "1.0"
+cxx-qt = "=0.10.0"
+cxx-qt-lib = { version = "=0.10.0", features = ["qt_full"] }
+cxx-qt-lib-extras = "=0.10.0"
+cxx-qt-build = { version = "=0.10.0", features = ["link_qt_object_files"] }
+
+cpal = { version = "0.18.2", features = ["pipewire"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+hound = "3.5"
+reqwest = { version = "0.13", default-features = false, features = ["json", "native-tls", "http2", "charset", "system-proxy"] }
+rtrb = "0.3"
+rusqlite = { version = "0.40", features = ["bundled"] }
+secret-service = { version = "5.2", features = ["rt-tokio-crypto-rust"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "sync"] }
+tokio-tungstenite = { version = "0.30", features = ["native-tls"] }
+uuid = { version = "1", features = ["v4"] }
+wiremock = "0.6"
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+strip = "debuginfo"

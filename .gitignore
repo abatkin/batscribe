@@ -1,0 +1,4 @@
+/target
+.*.swp
+# Generated per machine by cxx-qt-build (contains an absolute build path).
+.qmlls.ini
